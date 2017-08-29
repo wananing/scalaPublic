@@ -1,0 +1,5 @@
+def getAvg(douList: scala.collection.mutable.ListBuffer[istBuffer[Double]]):Double={  
+  val size = douList.size
+  val douSum = douList.map{f => f.get(0)}
+  val douAvg = douSum.reduce(_ + _) / size;
+}
