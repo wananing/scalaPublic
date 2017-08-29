@@ -1,0 +1,22 @@
+ def spiltGpsForTake(gpsList: scala.collection.mutable.ListBuffer[Row]): scala.collection.mutable.ListBuffer[ListBuffer[Row]] = {
+    val size = gpsList.size - 1
+
+    var gpsBucketList = new scala.collection.mutable.ListBuffer[ListBuffer[Row]]
+    var number: Int = 0;
+    var start=System.nanoTime();
+    println("@@@@s list size"+size)
+    for (i <- 0 to size) {
+      if (gpsList.size >= 20) {
+                gpsBucketList += gpsList.take("20".toInt)
+
+        gpsList.remove("19".toInt)
+       
+
+      }
+    }
+    var end=System.nanoTime();
+    println("@@@@spilt over"+(end-start))
+     println("@@@@spilt list size"+gpsBucketList.size)
+    if (gpsList.size > 0) gpsBucketList += gpsList
+    gpsBucketList
+  }
