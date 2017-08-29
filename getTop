@@ -1,0 +1,12 @@
+   def getTop(strArray: scala.collection.mutable.ArrayBuffer[String], sc: SparkContext): String = {
+    val words = sc.parallelize(strArray);
+    var result: String = "";
+    val pairs = words.map { word => (word, 1) }
+    val wordCount = pairs.reduceByKey(_ + _);
+    //for debug use
+    //countedData.foreach(x =>println(x))
+    val sortedData = wordCount.map { case (k, v) => (v, k) }
+    val topKData = sortedData.max()._2;
+    topKData;
+
+  }
